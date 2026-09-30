@@ -44,7 +44,7 @@ The dataset renamed files to sequential numbers, so clips cut from one recording
 ### Known risks to watch
 - **Shortcut learning.** Drone clips are mostly 0.5 s from a few drone datasets; non-drone clips are long city/nature recordings. The model may learn "which dataset" instead of "is there a drone". Short clips are looped (not zero-padded) to avoid one obvious shortcut; M2's own-recording test is the real check.
 - **Domain shift.** Public drone audio is clean and close-range; real conditions aren't. See *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), where baselines dropped to ~55% F1 on real recordings.
-- **Class imbalance.** Far more drone windows than non-drone windows: use class weights and look at precision/recall, not accuracy.
+- **Class balance.** By clips it's 10:1 drone, but by 0.96 s windows it's roughly balanced (train: ~163k not-drone vs ~114k drone), because non-drone clips are long. Still use class weights and judge by precision/recall, not accuracy.
 
 ## Setup
 
