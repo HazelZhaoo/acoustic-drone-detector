@@ -29,7 +29,7 @@ data/processed/{train,val,test}.npz
 models/classifier
 ```
 
-`src/audio.py` holds all audio preprocessing (16 kHz mono, 0.96 s windows, 0.48 s hop) and is shared by training and the Pi, so both see sound the same way.
+`src/audio.py` (16 kHz mono, 0.96 s windows, 0.48 s hop) and `src/yamnet.py` (embeddings) are shared by training and the Pi, so both see sound the same way. YAMNet runs one window per call on purpose: batching windows into one call is ~6x faster but changes the embeddings slightly (cosine similarity 0.93–0.99), which would no longer match the live device.
 
 ### Cleaning (prepare.py)
 - **Unreadable** files are dropped.
@@ -50,8 +50,12 @@ The dataset renamed files to sequential numbers, so clips cut from one recording
 
 ```bash
 ~/.pyenv/versions/3.12.0/bin/python -m venv .venv
-.venv/bin/pip install huggingface_hub pyarrow pandas numpy soundfile scipy scikit-learn
-cd src && ../.venv/bin/python prepare.py
+.venv/bin/pip install huggingface_hub pyarrow pandas numpy soundfile scipy scikit-learn \
+    tensorflow tensorflow-hub "setuptools<81"   # tensorflow-hub still imports pkg_resources
+cd src
+../.venv/bin/python prepare.py   # minutes
+../.venv/bin/python embed.py     # ~1 hour on a laptop CPU; resumable
+../.venv/bin/python train.py
 ```
 
 ## Data
