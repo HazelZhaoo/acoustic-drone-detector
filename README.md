@@ -2,7 +2,7 @@
 
 An offline acoustic early-warning device: a microphone listens, a small model decides "drone / not drone", and a local alarm gives people time to take cover. No internet needed.
 
-**Status:** M1 in progress: training a first classifier on a laptop.
+**Status:** M1 in progress. Data prep, YAMNet embeddings and a first classifier are done (results below); next is a live laptop-mic demo.
 
 ## Plan
 
@@ -45,6 +45,27 @@ The dataset renamed files to sequential numbers, so clips cut from one recording
 - **Shortcut learning.** Drone clips are mostly 0.5 s from a few drone datasets; non-drone clips are long city/nature recordings. The model may learn "which dataset" instead of "is there a drone". Short clips are looped (not zero-padded) to avoid one obvious shortcut; M2's own-recording test is the real check.
 - **Domain shift.** Public drone audio is clean and close-range; real conditions aren't. See *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), where baselines dropped to ~55% F1 on real recordings.
 - **Class balance.** By clips it's 10:1 drone, but by 0.96 s windows it's roughly balanced (train: ~163k not-drone vs ~114k drone), because non-drone clips are long. Still use class weights and judge by precision/recall, not accuracy.
+
+
+## Results so far (M1)
+
+Logistic regression on YAMNet embeddings, one prediction per 0.96 s window. C and the alarm threshold (0.71) were chosen on validation only; test was scored once.
+
+| Split | Precision | Recall | F1 | False-alarm rate |
+|---|---|---|---|---|
+| Validation | 99.4% | 99.6% | 99.5% | 0.6% |
+| **Test** | **98.5%** | **78.7%** | **87.5%** | **1.0%** |
+| Test without the two long-recording groups | 98.4% | 99.4% | – | – |
+
+**What the gap means.** Almost all missed drones come from two recording groups (`drone:6`, `drone:7`). They hold *every* long drone recording in the dataset (258 clips, up to 5 min) and are much quieter than the rest (median RMS 0.03–0.04 vs ~0.2), likely a different source such as real flights recorded at a distance. The block split put both groups in test, so the model never trained on anything like them and misses 87% of their windows.
+
+So the model has learned "loud, close-range drone clips" very well and does not yet generalize to quieter, longer, real-flight-like recordings, which is exactly the condition a deployed sensor faces. This is the domain-shift problem described in *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), showing up in public data.
+
+**Next steps to address it**
+- Volume (gain) augmentation and mixing drone clips with background noise at different levels, so loudness stops being a shortcut.
+- A source-aware evaluation: hold out whole recording sources, not just blocks, and report per-source results.
+- PCEN or similar loudness normalization before the classifier.
+- Real recordings through the device microphone (M2/M4).
 
 ## Setup
 
