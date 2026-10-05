@@ -27,7 +27,16 @@ Logistic regression on YAMNet embeddings, one prediction per 0.96 s window. Regu
 | **Test** | **98.5%** | **78.7%** | **87.5%** | **1.0%** |
 | Test without the two long-recording groups | 98.4% | 99.4% | – | – |
 
+<p>
+  <img src="docs/confusion_matrix.png" width="40%" alt="Test confusion matrix: 99.0% of non-drone windows correct, 78.7% of drone windows caught, 21.3% missed">
+  <img src="docs/precision_recall.png" width="45%" alt="Precision-recall curves: validation is near perfect, test drops off past 80% recall">
+</p>
+
 **What the gap means.** Almost all missed drones come from two recording groups (`drone:6`, `drone:7`). They hold *every* long drone recording in the dataset (258 clips, up to 5 min) and are much quieter than the rest (median RMS 0.03–0.04 vs ~0.2), likely a different source, such as real flights recorded at a distance. The split put both groups in test, so the model never trained on anything like them and misses 87% of their windows.
+
+![Score distribution: non-drone windows score near 0, typical drone clips near 1, but most long quiet drone recordings also score near 0](docs/score_distribution.png)
+
+The plot above shows it directly: typical drone clips score near 1 and non-drone windows near 0, but **63% of the long, quiet drone windows score near 0, as if they weren't drones at all**. That's not a threshold problem (moving the line wouldn't fix it); the model doesn't recognize them.
 
 The model has learned "loud, close-range drone clips" very well, but doesn't yet generalize to quieter, real-flight-like recordings, which is exactly what a deployed sensor faces. This is the domain-shift problem described in *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), showing up in public data.
 
@@ -60,11 +69,12 @@ The model has learned "loud, close-range drone clips" very well, but doesn't yet
 ```bash
 ~/.pyenv/versions/3.12.0/bin/python -m venv .venv
 .venv/bin/pip install huggingface_hub pyarrow pandas numpy soundfile scipy scikit-learn \
-    tensorflow tensorflow-hub "setuptools<81"   # tensorflow-hub still imports pkg_resources
+    tensorflow tensorflow-hub matplotlib "setuptools<81"   # tensorflow-hub still imports pkg_resources
 cd src
 ../.venv/bin/python prepare.py   # clean + split → data/processed/manifest.parquet (minutes)
 ../.venv/bin/python embed.py     # YAMNet embeddings → data/processed/*.npz (~40 min on a laptop CPU, resumable)
 ../.venv/bin/python train.py     # classifier + metrics → models/ (minutes)
+../.venv/bin/python evaluate.py  # plots → docs/
 ```
 
 Download the dataset first into `data/raw/` with `huggingface_hub.snapshot_download("geronimobasso/drone-audio-detection-samples", repo_type="dataset", local_dir="data/raw")`.
