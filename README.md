@@ -2,7 +2,20 @@
 
 Detects drones by sound. A microphone listens, a small model decides "drone" or "not drone" every half second, and the result can drive a local alarm, with no internet connection needed. The long-term aim is a cheap, offline early-warning sensor that gives people time to take cover.
 
-**Current goal:** train a model that classifies 0.96 s audio windows as drone / not drone, then run it live on a laptop microphone. *(Training is done, results below; the live demo is next.)*
+<p>
+  <img src="docs/demo_listening.png" width="49%" alt="Live demo while listening to normal room sound: blue pitch bars, drone probability 0.00">
+  <img src="docs/demo_drone.png" width="49%" alt="Live demo with a drone sound playing: red pitch bars, DRONE DETECTED, probability 1.00">
+</p>
+
+*Live demo (`src/viz.py`). Left: normal room sound, energy mostly below 3 kHz, probability 0. Right: a drone playing from a phone, energy across the whole range with strong propeller peaks; the alarm stays on even when one window dips to 0.4, because it needs 3 of the last 5 windows to agree.*
+
+## Why
+
+Small drones have become cheap, common weapons in modern conflicts, and they are hard to see coming, especially at night or under tree cover. Radar and camera-based counter-drone systems are expensive and usually need power and network infrastructure that many communities don't have. But drones are loud: their propellers make a steady, recognizable buzz. Ukraine's Sky Fortress network has shown that inexpensive microphones can detect drones at scale.
+
+This project explores the low-cost end of that idea: **one microphone and a small model, running fully offline, that can sound a local alarm and give people time to take cover.** No internet, no cloud, cheap enough to place in many locations.
+
+**Current state:** a model that classifies 0.96 s audio windows as drone / not drone, running live on a laptop microphone. Next is moving it onto a Raspberry Pi with a buzzer.
 
 ## How it works
 
