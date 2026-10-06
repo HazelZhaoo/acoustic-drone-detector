@@ -15,7 +15,7 @@ Small drones have become cheap, common weapons in modern conflicts, and they are
 
 This project explores the low-cost end of that idea: **one microphone and a small model, running fully offline, that can sound a local alarm and give people time to take cover.** No internet, no cloud, cheap enough to place in many locations.
 
-**Current state:** a model that classifies 0.96 s audio windows as drone / not drone, running live on a laptop microphone, with an augmentation experiment for quieter, farther drones. Next: testing across drone types (including military-style fixed-wing drones) and moving onto a Raspberry Pi.
+**Current state:** a model that classifies 0.96 s audio windows as drone / not drone, running live on a laptop microphone, tested blind on recordings from other sources. Next: testing across drone types (including military-style fixed-wing drones) and moving onto a Raspberry Pi.
 
 ## How it works
 
@@ -61,9 +61,27 @@ Window scores undersell an alarm system: what matters is whether the alarm (3 of
 | Quiet, long drone recordings that raised the alarm | 33.7% | **53.1%** |
 | Non-drone recordings with a false alarm | **1.5%** | 3.4% |
 
-**Augmentation** (`augment.py`): every training drone clip gets a copy that sounds farther away: muffled (low-pass 0.8–4 kHz), mixed with real background noise (SNR −5 to 20 dB) and turned down (−35 to −5 dB); some non-drone clips get random volume too, so loudness alone can't separate the classes. It lifts the quiet recordings from about 1 in 3 to more than 1 in 2, but doubles false alarms, so it's a trade-off, not a free win. The live demo keeps the original model for now. *(Caveat: these quiet recordings were already used to diagnose the problem, so this is a check that the fix works, not a fully blind test.)*
+**Augmentation** (`augment.py`): every training drone clip gets a copy that sounds farther away: muffled (low-pass 0.8–4 kHz), mixed with real background noise (SNR −5 to 20 dB) and turned down (−35 to −5 dB); some non-drone clips get random volume too, so loudness alone can't separate the classes. It lifts the quiet recordings from about 1 in 3 to more than 1 in 2, but doubles false alarms, so it's a trade-off, not a free win. The blind test below confirms it on unseen data. *(Caveat: these quiet recordings were already used to diagnose the problem, so this is a check that the fix works, not a fully blind test.)*
 
 **Weak labels.** Inside a single quiet recording, loudness swings ~50× (RMS 0.01 to 0.58) as the drone moves, and YAMNet's own top label for some 20 s clips is "Silence" or "Mains hum". The whole recording is labeled "drone", but the drone isn't audible in every window, so part of the "miss" rate is windows with nothing to hear.
+
+### Blind test: recordings from new sources
+
+Recordings the model never saw, from two other public datasets: outdoor flights of a DJI Matrice 300 (large, ~9 kg) and a DJI Mavic Mini 2 (small) at 5–10 m, with and without people talking ([Zenodo 15190811](https://zenodo.org/records/15190811), CC BY 4.0), plus 30 drone, 30 helicopter and 30 background clips ([DroneDetectionThesis](https://zenodo.org/records/5500576)). Share of recordings where the alarm fired (`src/blind_test.py`, per-file results in `docs/blind_test.csv`):
+
+| Recordings | Original | + augmentation |
+|---|---|---|
+| Matrice 300 (large), 45 | **100%** | **100%** |
+| Matrice 300, people talking, 45 | **100%** | **100%** |
+| Mavic Mini 2 (small), 45 | 80% | **93%** |
+| Mavic Mini 2, people talking, 45 | 44% | **69%** |
+| Thesis drones (small hobby drones), 30 | 47% | 47% |
+| *False alarms:* background, 30 | 0% | 0% |
+| *False alarms:* helicopter, 30 | 13% | 20% |
+
+- **Large drones are caught every time**, even with people talking.
+- **Small drones are the hard case, and range matters:** the share of Mavic Mini windows flagged falls from 44% at 5 m to 18% at 10 m, so for small drones the current range is roughly 10 m. Nearby speech hides them further.
+- **The augmentation holds up on unseen data** (small drone 80% → 93%, with talking 44% → 69%), at the cost of a few more helicopter false alarms (4 → 6 of 30). The live demo uses the augmented model.
 
 ## Limitations and next steps
 
@@ -96,6 +114,7 @@ cd src
 ../.venv/bin/python augment.py   # optional: far-away drone copies → train_aug.npz (~20 min)
 ../.venv/bin/python train.py     # classifier + metrics → models/ (minutes); add --aug to include augment.py data
 ../.venv/bin/python evaluate.py  # plots → docs/
+../.venv/bin/python blind_test.py  # needs the two Zenodo datasets unzipped in data/external/
 ```
 
 ### Live detection

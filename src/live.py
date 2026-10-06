@@ -27,7 +27,7 @@ SMOOTH_HITS = 3
 
 class Detector:
     def __init__(self):
-        saved = joblib.load(ROOT / "models/classifier.joblib")
+        saved = joblib.load(ROOT / "models/classifier_aug.joblib")  # augmented: better on unseen drones (README)
         self.model, self.threshold = saved["model"], saved["threshold"]
         self.recent = deque(maxlen=SMOOTH_WINDOWS)
         yamnet.model()  # load YAMNet before listening starts

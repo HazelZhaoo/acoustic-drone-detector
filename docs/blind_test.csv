@@ -1,0 +1,271 @@
+path,group,is_drone,distance_m,height_m,original_alarm,original_window_share,augmented_alarm,augmented_window_share
+x4_d1_matrice300_10m_0m_230315_00061.WAV,Drone: Matrice 300 (large),True,10.0,0.0,True,0.7034482758620689,True,0.4206896551724138
+x4_d1_matrice300_10m_0m_230315_00062.WAV,Drone: Matrice 300 (large),True,10.0,0.0,True,0.5935483870967742,True,0.3935483870967742
+x4_d1_matrice300_10m_0m_230315_00063.WAV,Drone: Matrice 300 (large),True,10.0,0.0,True,0.4166666666666667,True,0.2361111111111111
+x4_d1_matrice300_10m_0m_230315_00064.WAV,Drone: Matrice 300 (large),True,10.0,0.0,True,0.5686274509803921,True,0.32679738562091504
+x4_d1_matrice300_10m_0m_230315_00065.WAV,Drone: Matrice 300 (large),True,10.0,0.0,True,0.48951048951048953,True,0.24475524475524477
+x4_d1_matrice300_10m_0m_230315_00066_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,0.0,True,0.6140350877192983,True,0.40350877192982454
+x4_d1_matrice300_10m_0m_230315_00067_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,0.0,True,0.6037735849056604,True,0.37735849056603776
+x4_d1_matrice300_10m_0m_230315_00068_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,0.0,True,0.5531914893617021,True,0.3404255319148936
+x4_d1_matrice300_10m_0m_230315_00069_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,0.0,True,0.8863636363636364,True,0.8863636363636364
+x4_d1_matrice300_10m_0m_230315_00070_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,0.0,True,0.5573770491803278,True,0.4918032786885246
+x4_d1_matrice300_10m_5m_230315_00071.WAV,Drone: Matrice 300 (large),True,10.0,5.0,True,0.725925925925926,True,0.7407407407407407
+x4_d1_matrice300_10m_5m_230315_00072.WAV,Drone: Matrice 300 (large),True,10.0,5.0,True,0.7692307692307693,True,0.6153846153846154
+x4_d1_matrice300_10m_5m_230315_00073.WAV,Drone: Matrice 300 (large),True,10.0,5.0,True,0.7919463087248322,True,0.5973154362416108
+x4_d1_matrice300_10m_5m_230315_00074.WAV,Drone: Matrice 300 (large),True,10.0,5.0,True,0.8015267175572519,True,0.6335877862595419
+x4_d1_matrice300_10m_5m_230315_00075.WAV,Drone: Matrice 300 (large),True,10.0,5.0,True,0.6737588652482269,True,0.5035460992907801
+x4_d1_matrice300_10m_5m_230315_00076_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,5.0,True,0.62,True,0.9
+x4_d1_matrice300_10m_5m_230315_00077_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,5.0,True,0.5476190476190477,True,0.5238095238095238
+x4_d1_matrice300_10m_5m_230315_00078_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,5.0,True,0.3333333333333333,True,0.4074074074074074
+x4_d1_matrice300_10m_5m_230315_00079_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,5.0,True,0.5517241379310345,True,0.6379310344827587
+x4_d1_matrice300_10m_5m_230315_00080_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,5.0,True,0.9137931034482759,True,0.8793103448275862
+x4_d1_matrice300_10m_8m_230315_00081.WAV,Drone: Matrice 300 (large),True,10.0,8.0,True,0.8148148148148148,True,0.7481481481481481
+x4_d1_matrice300_10m_8m_230315_00082.WAV,Drone: Matrice 300 (large),True,10.0,8.0,True,0.75,True,0.6486486486486487
+x4_d1_matrice300_10m_8m_230315_00083.WAV,Drone: Matrice 300 (large),True,10.0,8.0,True,0.9647887323943662,True,0.8873239436619719
+x4_d1_matrice300_10m_8m_230315_00084.WAV,Drone: Matrice 300 (large),True,10.0,8.0,True,1.0,True,0.9865771812080537
+x4_d1_matrice300_10m_8m_230315_00085.WAV,Drone: Matrice 300 (large),True,10.0,8.0,True,0.9,True,0.8461538461538461
+x4_d1_matrice300_10m_8m_230315_00086_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,8.0,True,0.9818181818181818,True,0.9818181818181818
+x4_d1_matrice300_10m_8m_230315_00087_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,8.0,True,0.7659574468085106,True,0.7446808510638298
+x4_d1_matrice300_10m_8m_230315_00088_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,8.0,True,0.9607843137254902,True,0.9803921568627451
+x4_d1_matrice300_10m_8m_230315_00089_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,8.0,True,0.8703703703703703,True,0.8888888888888888
+x4_d1_matrice300_10m_8m_230315_00090_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,10.0,8.0,True,0.7457627118644068,True,0.7966101694915254
+x4_d1_matrice300_5m_0m_230315_0001.WAV,Drone: Matrice 300 (large),True,5.0,0.0,True,0.9852941176470589,True,0.7647058823529411
+x4_d1_matrice300_5m_0m_230315_0002.WAV,Drone: Matrice 300 (large),True,5.0,0.0,True,0.49193548387096775,True,0.3870967741935484
+x4_d1_matrice300_5m_0m_230315_0003.WAV,Drone: Matrice 300 (large),True,5.0,0.0,True,0.8296296296296296,True,0.562962962962963
+x4_d1_matrice300_5m_0m_230315_0004.WAV,Drone: Matrice 300 (large),True,5.0,0.0,True,0.676923076923077,True,0.3384615384615385
+x4_d1_matrice300_5m_0m_230315_0005.WAV,Drone: Matrice 300 (large),True,5.0,0.0,True,0.7246376811594203,True,0.4492753623188406
+x4_d1_matrice300_5m_0m_230315_0006_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,0.0,True,0.45614035087719296,True,0.3333333333333333
+x4_d1_matrice300_5m_0m_230315_0007_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,0.0,True,0.8571428571428571,True,0.6071428571428571
+x4_d1_matrice300_5m_0m_230315_0008_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,0.0,True,0.6274509803921569,True,0.3137254901960784
+x4_d1_matrice300_5m_0m_230315_0009_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,0.0,True,0.8571428571428571,True,0.7678571428571429
+x4_d1_matrice300_5m_0m_230315_0010_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,0.0,True,0.7307692307692307,True,0.7692307692307693
+x4_d1_matrice300_5m_5m_230315_00011.WAV,Drone: Matrice 300 (large),True,5.0,5.0,True,0.8625954198473282,True,0.7938931297709924
+x4_d1_matrice300_5m_5m_230315_00012.WAV,Drone: Matrice 300 (large),True,5.0,5.0,True,0.7172413793103448,True,0.6413793103448275
+x4_d1_matrice300_5m_5m_230315_00013.WAV,Drone: Matrice 300 (large),True,5.0,5.0,True,0.8523489932885906,True,0.7583892617449665
+x4_d1_matrice300_5m_5m_230315_00014.WAV,Drone: Matrice 300 (large),True,5.0,5.0,True,0.9726027397260274,True,0.952054794520548
+x4_d1_matrice300_5m_5m_230315_00015.WAV,Drone: Matrice 300 (large),True,5.0,5.0,True,0.9727891156462585,True,0.9115646258503401
+x4_d1_matrice300_5m_5m_230315_00016_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,5.0,True,0.9655172413793104,True,0.9310344827586207
+x4_d1_matrice300_5m_5m_230315_00017_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,5.0,True,1.0,True,0.975609756097561
+x4_d1_matrice300_5m_5m_230315_00018_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,5.0,True,0.7333333333333333,True,0.6888888888888889
+x4_d1_matrice300_5m_5m_230315_00019_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,5.0,True,0.8928571428571429,True,0.8571428571428571
+x4_d1_matrice300_5m_5m_230315_00020_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,5.0,True,0.7450980392156863,True,0.7450980392156863
+x4_d1_matrice300_5m_8m_230315_00021.WAV,Drone: Matrice 300 (large),True,5.0,8.0,True,0.951048951048951,True,0.965034965034965
+x4_d1_matrice300_5m_8m_230315_00022.WAV,Drone: Matrice 300 (large),True,5.0,8.0,True,0.9931972789115646,True,1.0
+x4_d1_matrice300_5m_8m_230315_00023.WAV,Drone: Matrice 300 (large),True,5.0,8.0,True,1.0,True,0.9863945578231292
+x4_d1_matrice300_5m_8m_230315_00024.WAV,Drone: Matrice 300 (large),True,5.0,8.0,True,0.9645390070921985,True,0.9787234042553191
+x4_d1_matrice300_5m_8m_230315_00025.WAV,Drone: Matrice 300 (large),True,5.0,8.0,True,0.9862068965517241,True,1.0
+x4_d1_matrice300_5m_8m_230315_00026_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,8.0,True,0.9069767441860465,True,0.9534883720930233
+x4_d1_matrice300_5m_8m_230315_00027_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,8.0,True,0.8378378378378378,True,0.9459459459459459
+x4_d1_matrice300_5m_8m_230315_00028_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,8.0,True,1.0,True,1.0
+x4_d1_matrice300_5m_8m_230315_00029_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,8.0,True,1.0,True,1.0
+x4_d1_matrice300_5m_8m_230315_00030_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,5.0,8.0,True,0.9230769230769231,True,0.9487179487179487
+x4_d1_matrice300_8m_0m_230315_00031.WAV,Drone: Matrice 300 (large),True,8.0,0.0,True,0.7596899224806202,True,0.4573643410852713
+x4_d1_matrice300_8m_0m_230315_00032.WAV,Drone: Matrice 300 (large),True,8.0,0.0,True,0.3881578947368421,True,0.19078947368421054
+x4_d1_matrice300_8m_0m_230315_00033.WAV,Drone: Matrice 300 (large),True,8.0,0.0,True,0.6901408450704225,True,0.5915492957746479
+x4_d1_matrice300_8m_0m_230315_00034.WAV,Drone: Matrice 300 (large),True,8.0,0.0,True,0.3841059602649007,True,0.18543046357615894
+x4_d1_matrice300_8m_0m_230315_00035.WAV,Drone: Matrice 300 (large),True,8.0,0.0,True,0.5555555555555556,True,0.40522875816993464
+x4_d1_matrice300_8m_0m_230315_00036_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,0.0,True,0.7833333333333333,True,0.6833333333333333
+x4_d1_matrice300_8m_0m_230315_00037_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,0.0,True,0.4489795918367347,True,0.2653061224489796
+x4_d1_matrice300_8m_0m_230315_00038_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,0.0,True,0.2558139534883721,True,0.20930232558139536
+x4_d1_matrice300_8m_0m_230315_00039_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,0.0,True,0.43137254901960786,True,0.19607843137254902
+x4_d1_matrice300_8m_0m_230315_00040_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,0.0,True,0.5098039215686274,True,0.37254901960784315
+x4_d1_matrice300_8m_5m_230315_00041.WAV,Drone: Matrice 300 (large),True,8.0,5.0,True,0.7272727272727273,True,0.768595041322314
+x4_d1_matrice300_8m_5m_230315_00042.WAV,Drone: Matrice 300 (large),True,8.0,5.0,True,0.9440559440559441,True,0.9230769230769231
+x4_d1_matrice300_8m_5m_230315_00043.WAV,Drone: Matrice 300 (large),True,8.0,5.0,True,0.9230769230769231,True,0.8653846153846154
+x4_d1_matrice300_8m_5m_230315_00044.WAV,Drone: Matrice 300 (large),True,8.0,5.0,True,0.7777777777777778,True,0.7361111111111112
+x4_d1_matrice300_8m_5m_230315_00045.WAV,Drone: Matrice 300 (large),True,8.0,5.0,True,0.8859060402684564,True,0.8456375838926175
+x4_d1_matrice300_8m_5m_230315_00046_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,5.0,True,0.9090909090909091,True,0.9272727272727272
+x4_d1_matrice300_8m_5m_230315_00047_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,5.0,True,0.7592592592592593,True,0.7407407407407407
+x4_d1_matrice300_8m_5m_230315_00048_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,5.0,True,1.0,True,1.0
+x4_d1_matrice300_8m_5m_230315_00049_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,5.0,True,1.0,True,1.0
+x4_d1_matrice300_8m_5m_230315_00050_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,5.0,True,0.896551724137931,True,0.8793103448275862
+x4_d1_matrice300_8m_8m_230315_00051.WAV,Drone: Matrice 300 (large),True,8.0,8.0,True,1.0,True,1.0
+x4_d1_matrice300_8m_8m_230315_00052.WAV,Drone: Matrice 300 (large),True,8.0,8.0,True,0.951048951048951,True,0.951048951048951
+x4_d1_matrice300_8m_8m_230315_00053.WAV,Drone: Matrice 300 (large),True,8.0,8.0,True,0.9657534246575342,True,0.958904109589041
+x4_d1_matrice300_8m_8m_230315_00054.WAV,Drone: Matrice 300 (large),True,8.0,8.0,True,0.9931506849315068,True,0.9931506849315068
+x4_d1_matrice300_8m_8m_230315_00055.WAV,Drone: Matrice 300 (large),True,8.0,8.0,True,0.9452054794520548,True,0.9452054794520548
+x4_d1_matrice300_8m_8m_230315_00056_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,8.0,True,0.9814814814814815,True,0.9814814814814815
+x4_d1_matrice300_8m_8m_230315_00057_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,8.0,True,0.6976744186046512,True,0.7441860465116279
+x4_d1_matrice300_8m_8m_230315_00058_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,8.0,True,0.9122807017543859,True,0.9824561403508771
+x4_d1_matrice300_8m_8m_230315_00059_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,8.0,True,0.8780487804878049,True,0.975609756097561
+x4_d1_matrice300_8m_8m_230315_00060_sekwencja.WAV,"Drone: Matrice 300 (large), people talking",True,8.0,8.0,True,0.8571428571428571,True,0.9523809523809523
+x4_d5_mavicmini2_10m_0m_230415_0061.WAV,Drone: Mavic Mini 2 (small),True,10.0,0.0,True,0.291044776119403,True,0.29850746268656714
+x4_d5_mavicmini2_10m_0m_230415_0062.WAV,Drone: Mavic Mini 2 (small),True,10.0,0.0,True,0.22695035460992907,True,0.2198581560283688
+x4_d5_mavicmini2_10m_0m_230415_0063.WAV,Drone: Mavic Mini 2 (small),True,10.0,0.0,True,0.5,True,0.2714285714285714
+x4_d5_mavicmini2_10m_0m_230415_0064.WAV,Drone: Mavic Mini 2 (small),True,10.0,0.0,True,0.5149253731343284,True,0.34328358208955223
+x4_d5_mavicmini2_10m_0m_230415_0065.WAV,Drone: Mavic Mini 2 (small),True,10.0,0.0,True,0.4594594594594595,True,0.21621621621621623
+x4_d5_mavicmini2_10m_0m_230415_0066_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,0.0,True,0.2037037037037037,True,0.3333333333333333
+x4_d5_mavicmini2_10m_0m_230415_0067_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,0.0,True,0.325,True,0.375
+x4_d5_mavicmini2_10m_0m_230415_0068_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,0.0,True,0.3023255813953488,True,0.3953488372093023
+x4_d5_mavicmini2_10m_0m_230415_0069_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,0.0,True,0.1,True,0.15
+x4_d5_mavicmini2_10m_0m_230415_0070_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,0.0,True,0.21621621621621623,True,0.2702702702702703
+x4_d5_mavicmini2_10m_5m_230415_0051.WAV,Drone: Mavic Mini 2 (small),True,10.0,5.0,True,0.09558823529411764,True,0.20588235294117646
+x4_d5_mavicmini2_10m_5m_230415_0052.WAV,Drone: Mavic Mini 2 (small),True,10.0,5.0,False,0.05,True,0.17142857142857143
+x4_d5_mavicmini2_10m_5m_230415_0053.WAV,Drone: Mavic Mini 2 (small),True,10.0,5.0,True,0.2708333333333333,True,0.3194444444444444
+x4_d5_mavicmini2_10m_5m_230415_0054.WAV,Drone: Mavic Mini 2 (small),True,10.0,5.0,True,0.12837837837837837,True,0.16891891891891891
+x4_d5_mavicmini2_10m_5m_230415_0055.WAV,Drone: Mavic Mini 2 (small),True,10.0,5.0,True,0.15,True,0.2357142857142857
+x4_d5_mavicmini2_10m_5m_230415_0056_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,5.0,False,0.06976744186046512,False,0.13953488372093023
+x4_d5_mavicmini2_10m_5m_230415_0057_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,5.0,False,0.045454545454545456,False,0.06818181818181818
+x4_d5_mavicmini2_10m_5m_230415_0058_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,5.0,False,0.02702702702702703,False,0.08108108108108109
+x4_d5_mavicmini2_10m_5m_230415_0059_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,5.0,True,0.21052631578947367,True,0.5
+x4_d5_mavicmini2_10m_5m_230415_0060_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,5.0,False,0.0,False,0.1388888888888889
+x4_d5_mavicmini2_10m_8m_230415_0001.WAV,Drone: Mavic Mini 2 (small),True,10.0,8.0,True,0.01893939393939394,True,0.043560606060606064
+x4_d5_mavicmini2_10m_8m_230415_0002.WAV,Drone: Mavic Mini 2 (small),True,10.0,8.0,False,0.013986013986013986,False,0.02097902097902098
+x4_d5_mavicmini2_10m_8m_230415_0003.WAV,Drone: Mavic Mini 2 (small),True,10.0,8.0,True,0.017391304347826087,True,0.043478260869565216
+x4_d5_mavicmini2_10m_8m_230415_0004.WAV,Drone: Mavic Mini 2 (small),True,10.0,8.0,False,0.012448132780082987,True,0.04979253112033195
+x4_d5_mavicmini2_10m_8m_230415_0005.WAV,Drone: Mavic Mini 2 (small),True,10.0,8.0,False,0.013986013986013986,True,0.08391608391608392
+x4_d5_mavicmini2_10m_8m_230415_0006_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,8.0,False,0.0,False,0.0
+x4_d5_mavicmini2_10m_8m_230415_0007_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,8.0,False,0.0,False,0.0
+x4_d5_mavicmini2_10m_8m_230415_0008_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,8.0,False,0.02702702702702703,True,0.16216216216216217
+x4_d5_mavicmini2_10m_8m_230415_0009_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,8.0,True,0.08333333333333333,True,0.08333333333333333
+x4_d5_mavicmini2_10m_8m_230415_0010_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,10.0,8.0,False,0.02631578947368421,False,0.10526315789473684
+x4_d5_mavicmini2_5m_0m_230415_0081.WAV,Drone: Mavic Mini 2 (small),True,5.0,0.0,True,0.7,True,0.5846153846153846
+x4_d5_mavicmini2_5m_0m_230415_0082.WAV,Drone: Mavic Mini 2 (small),True,5.0,0.0,True,0.6737588652482269,True,0.5531914893617021
+x4_d5_mavicmini2_5m_0m_230415_0083.WAV,Drone: Mavic Mini 2 (small),True,5.0,0.0,True,0.958041958041958,True,0.916083916083916
+x4_d5_mavicmini2_5m_0m_230415_0084.WAV,Drone: Mavic Mini 2 (small),True,5.0,0.0,True,0.773972602739726,True,0.5068493150684932
+x4_d5_mavicmini2_5m_0m_230415_0085.WAV,Drone: Mavic Mini 2 (small),True,5.0,0.0,True,0.8287671232876712,True,0.6164383561643836
+x4_d5_mavicmini2_5m_0m_230415_0086_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,0.0,True,0.5348837209302325,True,0.46511627906976744
+x4_d5_mavicmini2_5m_0m_230415_0087_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,0.0,True,0.3939393939393939,True,0.30303030303030304
+x4_d5_mavicmini2_5m_0m_230415_0088_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,0.0,True,0.7857142857142857,True,0.4642857142857143
+x4_d5_mavicmini2_5m_0m_230415_0089_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,0.0,True,0.6756756756756757,True,0.40540540540540543
+x4_d5_mavicmini2_5m_0m_230415_0090_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,0.0,True,0.4444444444444444,True,0.4666666666666667
+x4_d5_mavicmini2_5m_5m_230415_0031.WAV,Drone: Mavic Mini 2 (small),True,5.0,5.0,True,0.436241610738255,True,0.6174496644295302
+x4_d5_mavicmini2_5m_5m_230415_0032.WAV,Drone: Mavic Mini 2 (small),True,5.0,5.0,True,0.32432432432432434,True,0.5540540540540541
+x4_d5_mavicmini2_5m_5m_230415_0033.WAV,Drone: Mavic Mini 2 (small),True,5.0,5.0,True,0.6993006993006993,True,0.7202797202797203
+x4_d5_mavicmini2_5m_5m_230415_0034.WAV,Drone: Mavic Mini 2 (small),True,5.0,5.0,True,0.5886524822695035,True,0.7021276595744681
+x4_d5_mavicmini2_5m_5m_230415_0035.WAV,Drone: Mavic Mini 2 (small),True,5.0,5.0,True,0.38271604938271603,True,0.5370370370370371
+x4_d5_mavicmini2_5m_5m_230415_0036_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,5.0,True,0.3902439024390244,True,0.6341463414634146
+x4_d5_mavicmini2_5m_5m_230415_0037_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,5.0,False,0.10810810810810811,True,0.35135135135135137
+x4_d5_mavicmini2_5m_5m_230415_0038_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,5.0,True,0.16666666666666666,True,0.3333333333333333
+x4_d5_mavicmini2_5m_5m_230415_0039_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,5.0,True,0.225,True,0.475
+x4_d5_mavicmini2_5m_5m_230415_0040_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,5.0,False,0.2,True,0.34285714285714286
+x4_d5_mavicmini2_5m_8m_230415_0021.WAV,Drone: Mavic Mini 2 (small),True,5.0,8.0,False,0.038461538461538464,True,0.07692307692307693
+x4_d5_mavicmini2_5m_8m_230415_0022.WAV,Drone: Mavic Mini 2 (small),True,5.0,8.0,False,0.020134228187919462,False,0.040268456375838924
+x4_d5_mavicmini2_5m_8m_230415_0023.WAV,Drone: Mavic Mini 2 (small),True,5.0,8.0,True,0.08108108108108109,True,0.18243243243243243
+x4_d5_mavicmini2_5m_8m_230415_0024.WAV,Drone: Mavic Mini 2 (small),True,5.0,8.0,False,0.013888888888888888,False,0.06944444444444445
+x4_d5_mavicmini2_5m_8m_230415_0025.WAV,Drone: Mavic Mini 2 (small),True,5.0,8.0,False,0.06338028169014084,True,0.14788732394366197
+x4_d5_mavicmini2_5m_8m_230415_0026_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,8.0,False,0.05,True,0.21666666666666667
+x4_d5_mavicmini2_5m_8m_230415_0027_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,8.0,False,0.08108108108108109,True,0.08108108108108109
+x4_d5_mavicmini2_5m_8m_230415_0028_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,8.0,False,0.0,False,0.05263157894736842
+x4_d5_mavicmini2_5m_8m_230415_0029_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,8.0,False,0.024390243902439025,False,0.12195121951219512
+x4_d5_mavicmini2_5m_8m_230415_0030_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,5.0,8.0,False,0.0,False,0.05263157894736842
+x4_d5_mavicmini2_8m_0m_230415_0071.WAV,Drone: Mavic Mini 2 (small),True,8.0,0.0,True,0.40828402366863903,True,0.3136094674556213
+x4_d5_mavicmini2_8m_0m_230415_0072.WAV,Drone: Mavic Mini 2 (small),True,8.0,0.0,True,0.5694444444444444,True,0.3125
+x4_d5_mavicmini2_8m_0m_230415_0073.WAV,Drone: Mavic Mini 2 (small),True,8.0,0.0,True,0.8226950354609929,True,0.524822695035461
+x4_d5_mavicmini2_8m_0m_230415_0074.WAV,Drone: Mavic Mini 2 (small),True,8.0,0.0,True,0.6232876712328768,True,0.4041095890410959
+x4_d5_mavicmini2_8m_0m_230415_0075.WAV,Drone: Mavic Mini 2 (small),True,8.0,0.0,True,0.3028169014084507,True,0.28169014084507044
+x4_d5_mavicmini2_8m_0m_230415_0076_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,0.0,True,0.4357142857142857,True,0.4357142857142857
+x4_d5_mavicmini2_8m_0m_230415_0077_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,0.0,True,0.36585365853658536,True,0.43902439024390244
+x4_d5_mavicmini2_8m_0m_230415_0078_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,0.0,True,0.4358974358974359,True,0.41025641025641024
+x4_d5_mavicmini2_8m_0m_230415_0079_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,0.0,False,0.08571428571428572,True,0.2
+x4_d5_mavicmini2_8m_0m_230415_0080_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,0.0,True,0.2631578947368421,True,0.2631578947368421
+x4_d5_mavicmini2_8m_5m_230415_0041.WAV,Drone: Mavic Mini 2 (small),True,8.0,5.0,True,0.06993006993006994,True,0.13286713286713286
+x4_d5_mavicmini2_8m_5m_230415_0042.WAV,Drone: Mavic Mini 2 (small),True,8.0,5.0,True,0.2552083333333333,True,0.3229166666666667
+x4_d5_mavicmini2_8m_5m_230415_0043.WAV,Drone: Mavic Mini 2 (small),True,8.0,5.0,True,0.2605633802816901,True,0.2676056338028169
+x4_d5_mavicmini2_8m_5m_230415_0044.WAV,Drone: Mavic Mini 2 (small),True,8.0,5.0,True,0.1310344827586207,True,0.2827586206896552
+x4_d5_mavicmini2_8m_5m_230415_0045.WAV,Drone: Mavic Mini 2 (small),True,8.0,5.0,True,0.2887323943661972,True,0.43661971830985913
+x4_d5_mavicmini2_8m_5m_230415_0046_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,5.0,False,0.0,True,0.08695652173913043
+x4_d5_mavicmini2_8m_5m_230415_0047_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,5.0,False,0.05128205128205128,False,0.1282051282051282
+x4_d5_mavicmini2_8m_5m_230415_0048_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,5.0,False,0.03125,True,0.171875
+x4_d5_mavicmini2_8m_5m_230415_0049_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,5.0,False,0.046511627906976744,False,0.11627906976744186
+x4_d5_mavicmini2_8m_5m_230415_0050_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,5.0,False,0.08695652173913043,True,0.30434782608695654
+x4_d5_mavicmini2_8m_8m_230415_0011.WAV,Drone: Mavic Mini 2 (small),True,8.0,8.0,True,0.24,True,0.41333333333333333
+x4_d5_mavicmini2_8m_8m_230415_0012.WAV,Drone: Mavic Mini 2 (small),True,8.0,8.0,True,0.05421686746987952,True,0.23493975903614459
+x4_d5_mavicmini2_8m_8m_230415_0013.WAV,Drone: Mavic Mini 2 (small),True,8.0,8.0,False,0.04964539007092199,True,0.23404255319148937
+x4_d5_mavicmini2_8m_8m_230415_0014.WAV,Drone: Mavic Mini 2 (small),True,8.0,8.0,True,0.11920529801324503,True,0.2251655629139073
+x4_d5_mavicmini2_8m_8m_230415_0015.WAV,Drone: Mavic Mini 2 (small),True,8.0,8.0,True,0.18055555555555555,True,0.4097222222222222
+x4_d5_mavicmini2_8m_8m_230415_0016_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,8.0,True,0.10638297872340426,True,0.1702127659574468
+x4_d5_mavicmini2_8m_8m_230415_0017_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,8.0,False,0.0,True,0.10810810810810811
+x4_d5_mavicmini2_8m_8m_230415_0018_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,8.0,False,0.06451612903225806,False,0.12903225806451613
+x4_d5_mavicmini2_8m_8m_230415_0019_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,8.0,False,0.02857142857142857,True,0.17142857142857143
+x4_d5_mavicmini2_8m_8m_230415_0020_sekwencja.WAV,"Drone: Mavic Mini 2 (small), people talking",True,8.0,8.0,False,0.05405405405405406,False,0.13513513513513514
+BACKGROUND_001.wav,Background,False,,,False,0.0,False,0.05263157894736842
+BACKGROUND_002.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_003.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_004.wav,Background,False,,,False,0.0,False,0.05263157894736842
+BACKGROUND_005.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_006.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_007.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_008.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_009.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_010.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_011.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_012.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_013.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_014.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_015.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_016.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_017.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_018.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_019.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_020.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_021.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_022.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_023.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_024.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_025.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_026.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_027.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_028.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_029.wav,Background,False,,,False,0.0,False,0.0
+BACKGROUND_030.wav,Background,False,,,False,0.0,False,0.0
+DRONE_001.wav,Drone: thesis set,True,,,True,1.0,True,0.8947368421052632
+DRONE_002.wav,Drone: thesis set,True,,,False,0.21052631578947367,False,0.15789473684210525
+DRONE_003.wav,Drone: thesis set,True,,,True,0.9473684210526315,True,1.0
+DRONE_004.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_005.wav,Drone: thesis set,True,,,True,0.5789473684210527,True,0.8947368421052632
+DRONE_006.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_007.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_008.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_009.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_010.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_011.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_012.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_013.wav,Drone: thesis set,True,,,False,0.10526315789473684,False,0.0
+DRONE_014.wav,Drone: thesis set,True,,,True,0.8947368421052632,True,0.6842105263157895
+DRONE_015.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_016.wav,Drone: thesis set,True,,,True,0.5789473684210527,True,0.5263157894736842
+DRONE_017.wav,Drone: thesis set,True,,,True,1.0,True,0.8947368421052632
+DRONE_018.wav,Drone: thesis set,True,,,True,1.0,True,1.0
+DRONE_019.wav,Drone: thesis set,True,,,True,0.7894736842105263,True,0.47368421052631576
+DRONE_020.wav,Drone: thesis set,True,,,True,0.47368421052631576,True,0.8947368421052632
+DRONE_021.wav,Drone: thesis set,True,,,True,0.3157894736842105,True,0.47368421052631576
+DRONE_022.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_023.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_024.wav,Drone: thesis set,True,,,True,0.631578947368421,True,0.8421052631578947
+DRONE_025.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_026.wav,Drone: thesis set,True,,,True,0.631578947368421,True,0.3157894736842105
+DRONE_027.wav,Drone: thesis set,True,,,True,0.6842105263157895,True,0.47368421052631576
+DRONE_028.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+DRONE_029.wav,Drone: thesis set,True,,,True,0.42105263157894735,True,0.3157894736842105
+DRONE_030.wav,Drone: thesis set,True,,,False,0.0,False,0.0
+HELICOPTER_001.wav,Helicopter,False,,,True,0.2631578947368421,True,0.21052631578947367
+HELICOPTER_002.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_003.wav,Helicopter,False,,,True,0.15789473684210525,True,0.21052631578947367
+HELICOPTER_004.wav,Helicopter,False,,,False,0.0,False,0.05263157894736842
+HELICOPTER_005.wav,Helicopter,False,,,False,0.10526315789473684,False,0.05263157894736842
+HELICOPTER_006.wav,Helicopter,False,,,False,0.0,True,0.3684210526315789
+HELICOPTER_007.wav,Helicopter,False,,,False,0.05263157894736842,False,0.15789473684210525
+HELICOPTER_008.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_009.wav,Helicopter,False,,,False,0.10526315789473684,True,0.21052631578947367
+HELICOPTER_010.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_011.wav,Helicopter,False,,,False,0.0,False,0.05263157894736842
+HELICOPTER_012.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_013.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_014.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_015.wav,Helicopter,False,,,False,0.05263157894736842,False,0.05263157894736842
+HELICOPTER_016.wav,Helicopter,False,,,False,0.0,False,0.05263157894736842
+HELICOPTER_017.wav,Helicopter,False,,,False,0.05263157894736842,False,0.05263157894736842
+HELICOPTER_018.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_019.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_020.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_021.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_022.wav,Helicopter,False,,,False,0.0,False,0.05263157894736842
+HELICOPTER_023.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_024.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_025.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_026.wav,Helicopter,False,,,False,0.0,False,0.0
+HELICOPTER_027.wav,Helicopter,False,,,True,0.3157894736842105,True,0.3157894736842105
+HELICOPTER_028.wav,Helicopter,False,,,False,0.0,True,0.15789473684210525
+HELICOPTER_029.wav,Helicopter,False,,,True,0.15789473684210525,False,0.10526315789473684
+HELICOPTER_030.wav,Helicopter,False,,,False,0.15789473684210525,False,0.10526315789473684
