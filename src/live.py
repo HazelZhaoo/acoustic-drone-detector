@@ -32,20 +32,24 @@ class Detector:
         self.recent = deque(maxlen=SMOOTH_WINDOWS)
         yamnet.model()  # load YAMNet before listening starts
 
-    def __call__(self, window: np.ndarray, t: float) -> None:
-        p = self.model.predict_proba(yamnet.embed(window[None]))[0, 1]
+    def __call__(self, window: np.ndarray) -> tuple[float, bool]:
+        """One 0.96 s window at 16 kHz -> (drone probability, smoothed alarm)."""
+        p = float(self.model.predict_proba(yamnet.embed(window[None]))[0, 1])
         self.recent.append(p >= self.threshold)
-        alarm = sum(self.recent) >= SMOOTH_HITS
-        bar = "█" * int(p * 20)
-        status = "🚨 DRONE" if alarm else "   —"
-        print(f"{t:6.1f}s  {p:5.2f} {bar:<20}  {status}", flush=True)
+        return p, sum(self.recent) >= SMOOTH_HITS
+
+
+def report(t: float, p: float, alarm: bool) -> None:
+    bar = "█" * int(p * 20)
+    status = "🚨 DRONE" if alarm else "   —"
+    print(f"{t:6.1f}s  {p:5.2f} {bar:<20}  {status}", flush=True)
 
 
 def run_file(path: str, detect: Detector) -> None:
     x = audio.load(path)
     hop = int(audio.HOP_S * audio.SAMPLE_RATE)
     for i, w in enumerate(audio.windows(x)):
-        detect(w, i * hop / audio.SAMPLE_RATE)
+        report(i * hop / audio.SAMPLE_RATE, *detect(w))
 
 
 def run_mic(detect: Detector) -> None:
@@ -63,7 +67,7 @@ def run_mic(detect: Detector) -> None:
         while True:
             buffer = np.concatenate([buffer, chunks.get()])[-win:]
             if buffer.size == win:
-                detect(audio.to_16k(buffer, sr)[: int(audio.WINDOW_S * audio.SAMPLE_RATE)], t)
+                report(t, *detect(audio.to_16k(buffer, sr)[: int(audio.WINDOW_S * audio.SAMPLE_RATE)]))
                 t += audio.HOP_S
 
 

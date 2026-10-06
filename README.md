@@ -85,6 +85,8 @@ cd src
 ../.venv/bin/python live.py clip.wav   # or run on a recording
 ```
 
+For a visual version, run `../.venv/bin/python viz.py` (or `viz.py clip.wav`): a live spectrogram of the last 8 seconds with the drone probability underneath, which turns red when a drone is detected.
+
 Every 0.48 s it scores the latest 0.96 s of sound and prints the drone probability. It only says **DRONE** when at least 3 of the last 5 windows are above the threshold, so a single odd sound doesn't trigger it (about a 1 s delay before the alarm turns on).
 
 Download the dataset first into `data/raw/` with `huggingface_hub.snapshot_download("geronimobasso/drone-audio-detection-samples", repo_type="dataset", local_dir="data/raw")`.
