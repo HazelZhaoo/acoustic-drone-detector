@@ -1,8 +1,9 @@
-"""Live visual demo: a scrolling spectrogram that turns red when a drone is detected.
+"""Live visual demo: equalizer-style pitch bars that turn red when a drone is detected.
 
 Same detector as live.py (0.96 s windows every 0.48 s, 3-of-5 smoothing); this
-just draws it. Top: status. Middle: the last few seconds of sound, pitch over
-time. Bottom: drone probability over time with the alarm threshold.
+just draws it. Top: status. Middle: one bar per pitch band (low on the left,
+high on the right), height = how loud that pitch is right now. Bottom: drone
+probability over the last few seconds with the alarm threshold.
 
 Run:
   cd src && ../.venv/bin/python viz.py            # microphone
@@ -14,20 +15,21 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
-from matplotlib.colors import LinearSegmentedColormap
-from scipy.signal import spectrogram
 
 import audio
 from live import Detector
 
-SHOW_S = 8            # seconds of history on screen
-FRAME_MS = 50         # redraw interval
-DB_RANGE = (-110, -35)  # spectrogram color scale (dB)
+SHOW_S = 8              # seconds of probability history on screen
+FRAME_MS = 50           # redraw interval
+N_BARS = 32             # pitch bands, log-spaced like hearing
+BAND_HZ = (60, 8000)    # lowest / highest pitch shown
+DB_RANGE = (-75, -15)   # loudness mapped to bar height 0..1
+SPECTRUM_S = 0.1        # bars show the last 0.1 s of sound
+DECAY = 0.75            # bars fall smoothly instead of flickering
 
 BG, INK, MUTED = "#000000", "#ffffff", "#8a8a85"
 IDLE, ALARM = "#3987e5", "#e66767"
-CMAP_IDLE = LinearSegmentedColormap.from_list("idle", [BG, "#12305c", IDLE, "#cfe2fa"])
-CMAP_ALARM = LinearSegmentedColormap.from_list("alarm", [BG, "#5c1414", ALARM, "#ffe1c4"])
+EDGES = np.geomspace(*BAND_HZ, N_BARS + 1)
 
 
 class Monitor:
@@ -55,11 +57,17 @@ class Monitor:
             self.history.append((self.t, self.p))
         self.history = [(t, p) for t, p in self.history if t > self.t - SHOW_S]
 
-    def spectrogram_db(self) -> np.ndarray:
-        x = audio.to_16k(self.buffer, self.sr)
-        x = np.pad(x, (SHOW_S * audio.SAMPLE_RATE - x.size, 0))  # left-pad until the screen fills
-        _, _, sxx = spectrogram(x, fs=audio.SAMPLE_RATE, nperseg=512, noverlap=352)
-        return 10 * np.log10(sxx + 1e-14)
+    def levels(self) -> np.ndarray:
+        """Loudness of each pitch band over the last SPECTRUM_S seconds, scaled 0..1."""
+        x = audio.to_16k(self.buffer[-int(0.2 * self.sr):], self.sr)[-int(SPECTRUM_S * audio.SAMPLE_RATE):]
+        if x.size < 64:
+            return np.zeros(N_BARS)
+        power = np.abs(np.fft.rfft(x * np.hanning(x.size))) ** 2 / x.size
+        freqs = np.fft.rfftfreq(x.size, 1 / audio.SAMPLE_RATE)
+        band = np.digitize(freqs, EDGES) - 1
+        db = np.array([10 * np.log10(power[band == i].mean() + 1e-12) if (band == i).any() else DB_RANGE[0]
+                       for i in range(N_BARS)])
+        return np.clip((db - DB_RANGE[0]) / (DB_RANGE[1] - DB_RANGE[0]), 0, 1)
 
 
 class View:
@@ -70,7 +78,7 @@ class View:
                              "axes.labelcolor": MUTED, "font.size": 12})
         self.fig = plt.figure(figsize=(11, 6.5))
         self.fig.canvas.manager.set_window_title("Acoustic Drone Detector")
-        grid = self.fig.add_gridspec(3, 1, height_ratios=[0.5, 3, 1.1], hspace=0.25,
+        grid = self.fig.add_gridspec(3, 1, height_ratios=[0.5, 3, 1.1], hspace=0.45,
                                      left=0.07, right=0.97, top=0.97, bottom=0.08)
 
         top = self.fig.add_subplot(grid[0])
@@ -78,14 +86,19 @@ class View:
         self.status = top.text(0, 0.5, "", fontsize=26, fontweight="bold", va="center")
         self.prob_text = top.text(1, 0.5, "", fontsize=18, ha="right", va="center", color=MUTED)
 
-        self.spec_ax = self.fig.add_subplot(grid[1])
-        self.image = self.spec_ax.imshow(
-            self.m.spectrogram_db(), origin="lower", aspect="auto", cmap=CMAP_IDLE,
-            extent=[-SHOW_S, 0, 0, audio.SAMPLE_RATE / 2000], vmin=DB_RANGE[0], vmax=DB_RANGE[1])
-        self.spec_ax.set_ylabel("Pitch (kHz)")
-        self.spec_ax.tick_params(labelbottom=False)
+        self.bars_ax = self.fig.add_subplot(grid[1])
+        self.heights = np.zeros(N_BARS)
+        self.bars = self.bars_ax.bar(np.arange(N_BARS), self.heights, width=0.8, color=IDLE)
+        self.bars_ax.set_ylim(0, 1)
+        self.bars_ax.set_xlim(-0.6, N_BARS - 0.4)
+        self.bars_ax.set_yticks([])
+        self.bars_ax.spines[["top", "right", "left"]].set_visible(False)
+        ticks = [100, 300, 1000, 3000, 8000]
+        self.bars_ax.set_xticks(np.interp(np.log(ticks), np.log(EDGES), np.arange(N_BARS + 1)) - 0.5,
+                                ["100 Hz", "300 Hz", "1 kHz", "3 kHz", "8 kHz"])
+        self.bars_ax.set_xlabel("Pitch:  low  →  high      (bar height = how loud)")
 
-        self.prob_ax = self.fig.add_subplot(grid[2], sharex=self.spec_ax)
+        self.prob_ax = self.fig.add_subplot(grid[2])
         self.prob_ax.axhline(self.m.detect.threshold, color=MUTED, linestyle="--", linewidth=1)
         self.prob_ax.text(-SHOW_S + 0.1, self.m.detect.threshold + 0.05, "alarm threshold",
                           color=MUTED, fontsize=10)
@@ -99,8 +112,10 @@ class View:
 
     def draw(self) -> None:
         color = ALARM if self.m.alarm else IDLE
-        self.image.set_data(self.m.spectrogram_db())
-        self.image.set_cmap(CMAP_ALARM if self.m.alarm else CMAP_IDLE)
+        self.heights = np.maximum(self.m.levels(), self.heights * DECAY)
+        for bar, h in zip(self.bars, self.heights):
+            bar.set_height(h)
+            bar.set_color(color)
         self.status.set_text("● DRONE DETECTED" if self.m.alarm else "● LISTENING")
         self.status.set_color(color)
         self.prob_text.set_text(f"drone probability {self.m.p:.2f}")
