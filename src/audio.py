@@ -20,11 +20,15 @@ def load(source) -> np.ndarray:
     if isinstance(source, (bytes, bytearray)):
         source = io.BytesIO(source)
     audio, sr = sf.read(source, dtype="float32", always_2d=True)
-    audio = audio.mean(axis=1)  # stereo -> mono
-    if sr != SAMPLE_RATE:
-        g = np.gcd(sr, SAMPLE_RATE)
-        audio = resample_poly(audio, SAMPLE_RATE // g, sr // g).astype(np.float32)
-    return audio
+    return to_16k(audio.mean(axis=1), sr)  # stereo -> mono, then resample
+
+
+def to_16k(audio: np.ndarray, sr: int) -> np.ndarray:
+    """Resample mono audio to 16 kHz (files and the live microphone both use this)."""
+    if sr == SAMPLE_RATE:
+        return audio.astype(np.float32)
+    g = np.gcd(sr, SAMPLE_RATE)
+    return resample_poly(audio, SAMPLE_RATE // g, sr // g).astype(np.float32)
 
 
 def rms(audio: np.ndarray) -> float:

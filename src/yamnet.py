@@ -4,8 +4,15 @@ YAMNet is Google's pretrained sound model (AudioSet, 521 sound classes). We
 keep it frozen and use its second-to-last layer: 1024 numbers describing a
 0.96 s window. Our own small classifier learns drone / not drone from those.
 """
+import os
+from pathlib import Path
+
 import numpy as np
-import tensorflow_hub as hub
+
+# Keep the downloaded model in the project: the default cache lives in a system
+# temp folder that macOS clears, which leaves a broken, empty copy behind.
+os.environ.setdefault("TFHUB_CACHE_DIR", str(Path(__file__).parent.parent / "models/tfhub"))
+import tensorflow_hub as hub  # noqa: E402
 
 YAMNET_URL = "https://tfhub.dev/google/yamnet/1"
 EMBEDDING_DIM = 1024

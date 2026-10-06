@@ -69,12 +69,22 @@ The model has learned "loud, close-range drone clips" very well, but doesn't yet
 ```bash
 ~/.pyenv/versions/3.12.0/bin/python -m venv .venv
 .venv/bin/pip install huggingface_hub pyarrow pandas numpy soundfile scipy scikit-learn \
-    tensorflow tensorflow-hub matplotlib "setuptools<81"   # tensorflow-hub still imports pkg_resources
+    tensorflow tensorflow-hub matplotlib sounddevice "setuptools<81"   # tensorflow-hub still imports pkg_resources
 cd src
 ../.venv/bin/python prepare.py   # clean + split → data/processed/manifest.parquet (minutes)
 ../.venv/bin/python embed.py     # YAMNet embeddings → data/processed/*.npz (~40 min on a laptop CPU, resumable)
 ../.venv/bin/python train.py     # classifier + metrics → models/ (minutes)
 ../.venv/bin/python evaluate.py  # plots → docs/
 ```
+
+### Live detection
+
+```bash
+cd src
+../.venv/bin/python live.py            # listen on the microphone (Ctrl+C to stop)
+../.venv/bin/python live.py clip.wav   # or run on a recording
+```
+
+Every 0.48 s it scores the latest 0.96 s of sound and prints the drone probability. It only says **DRONE** when at least 3 of the last 5 windows are above the threshold, so a single odd sound doesn't trigger it (about a 1 s delay before the alarm turns on).
 
 Download the dataset first into `data/raw/` with `huggingface_hub.snapshot_download("geronimobasso/drone-audio-detection-samples", repo_type="dataset", local_dir="data/raw")`.
