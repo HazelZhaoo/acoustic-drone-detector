@@ -8,9 +8,11 @@
      higher = fewer false alarms but more missed drones.
   4. Score once on test and save the model + metrics to models/.
 
-Run:  cd src && ../.venv/bin/python train.py
+Run:  cd src && ../.venv/bin/python train.py          # original training data
+      cd src && ../.venv/bin/python train.py --aug    # + simulated far-away drones (augment.py)
 """
 import json
+import sys
 from pathlib import Path
 
 import joblib
@@ -25,6 +27,7 @@ ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data/processed"
 MODELS = ROOT / "models"
 C_GRID = [0.01, 0.1, 1.0]
+QUIET_BLOCKS = ["drone:6", "drone:7"]  # the long, quiet test recordings the first model missed
 
 
 def load(split: str):
@@ -70,7 +73,12 @@ def worst_blocks(y, p, block, threshold: float, n: int = 5) -> list:
 
 
 if __name__ == "__main__":
+    use_aug = "--aug" in sys.argv
     X_train, y_train, _ = load("train")
+    if use_aug:
+        X_aug, y_aug, _ = load("train_aug")
+        X_train, y_train = np.concatenate([X_train, X_aug]), np.concatenate([y_train, y_aug])
+        print(f"Training with augmented data: {len(y_train)} windows")
     X_val, y_val, _ = load("val")
 
     print("Tuning C on val (PR-AUC):")
@@ -91,13 +99,16 @@ if __name__ == "__main__":
     X_test, y_test, block_test = load("test")
     p_test = model.predict_proba(X_test)[:, 1]
     test = scores(y_test, p_test, threshold)
+    quiet = np.isin(block_test, QUIET_BLOCKS) & (y_test == 1)
+    test["quiet_recall"] = round(float((p_test[quiet] >= threshold).mean()), 4)
     print("Test:", test)
     print("Worst test blocks (block, windows, error rate):")
     for row in worst_blocks(y_test, p_test, block_test, threshold):
         print("  ", row)
 
     MODELS.mkdir(exist_ok=True)
-    joblib.dump({"model": model, "threshold": threshold}, MODELS / "classifier.joblib")
-    (MODELS / "metrics.json").write_text(json.dumps(
+    name = "classifier_aug" if use_aug else "classifier"
+    joblib.dump({"model": model, "threshold": threshold}, MODELS / f"{name}.joblib")
+    (MODELS / f"metrics{'_aug' if use_aug else ''}.json").write_text(json.dumps(
         {"C": C, "threshold": threshold, "val": scores(y_val, p_val, threshold), "test": test}, indent=2))
-    print(f"\nSaved {MODELS / 'classifier.joblib'}")
+    print(f"\nSaved {MODELS / (name + '.joblib')}")
