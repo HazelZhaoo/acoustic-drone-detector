@@ -15,7 +15,7 @@ Small drones have become cheap, common weapons in modern conflicts, and they are
 
 This project explores the low-cost end of that idea: **one microphone and a small model, running fully offline, that can sound a local alarm and give people time to take cover.** No internet, no cloud, cheap enough to place in many locations.
 
-**Current state:** a model that classifies 0.96 s audio windows as drone / not drone, running live on a laptop microphone. Next is moving it onto a Raspberry Pi with a buzzer.
+**Current state:** a model that classifies 0.96 s audio windows as drone / not drone, running live on a laptop microphone, with an augmentation experiment for quieter, farther drones. Next: testing across drone types (including military-style fixed-wing drones) and moving onto a Raspberry Pi.
 
 ## How it works
 
@@ -45,19 +45,32 @@ Logistic regression on YAMNet embeddings, one prediction per 0.96 s window. Regu
   <img src="docs/precision_recall.png" width="45%" alt="Precision-recall curves: validation is near perfect, test drops off past 80% recall">
 </p>
 
-**What the gap means.** Almost all missed drones come from two recording groups (`drone:6`, `drone:7`). They hold *every* long drone recording in the dataset (258 clips, up to 5 min) and are much quieter than the rest (median RMS 0.03–0.04 vs ~0.2), likely a different source, such as real flights recorded at a distance. The split put both groups in test, so the model never trained on anything like them and misses 87% of their windows.
+**What the gap means.** Almost all missed windows come from two recording groups (`drone:6`, `drone:7`), which hold *every* long drone recording in the dataset (258 clips, up to 5 min). They're much quieter than the rest (median RMS 0.03–0.04 vs ~0.2), likely real flights recorded at a distance, and the split put them all in test, so the model never trained on anything like them.
 
 ![Score distribution: non-drone windows score near 0, typical drone clips near 1, but most long quiet drone recordings also score near 0](docs/score_distribution.png)
 
-The plot above shows it directly: typical drone clips score near 1 and non-drone windows near 0, but **63% of the long, quiet drone windows score near 0, as if they weren't drones at all**. That's not a threshold problem (moving the line wouldn't fix it); the model doesn't recognize them.
+Typical drone clips score near 1 and non-drone windows near 0, but **63% of the quiet drone windows also score near 0**. Moving the threshold wouldn't fix that; the model doesn't recognize them. This is the domain-shift problem described in *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), showing up in public data.
 
-The model has learned "loud, close-range drone clips" very well, but doesn't yet generalize to quieter, real-flight-like recordings, which is exactly what a deployed sensor faces. This is the domain-shift problem described in *Acoustic UAV Detection in Battlefield Scenarios* (arXiv 2608.14287), showing up in public data.
+### Per recording: does the alarm go off?
 
-**Next steps**
-- Volume augmentation and mixing drone clips with background noise, so loudness stops being a shortcut
-- Source-aware evaluation: hold out whole recording sources and report per-source results
-- Loudness normalization (e.g. PCEN) before the classifier
-- Testing on real recordings through the device's own microphone
+Window scores undersell an alarm system: what matters is whether the alarm (3 of the last 5 windows above threshold) fires *at some point* while a drone is there, and how often it fires when none is.
+
+| Test, per recording | Original model | + far-away augmentation |
+|---|---|---|
+| Drone recordings that raised the alarm | **98.3%** | 97.9% |
+| Quiet, long drone recordings that raised the alarm | 33.7% | **53.1%** |
+| Non-drone recordings with a false alarm | **1.5%** | 3.4% |
+
+**Augmentation** (`augment.py`): every training drone clip gets a copy that sounds farther away: muffled (low-pass 0.8–4 kHz), mixed with real background noise (SNR −5 to 20 dB) and turned down (−35 to −5 dB); some non-drone clips get random volume too, so loudness alone can't separate the classes. It lifts the quiet recordings from about 1 in 3 to more than 1 in 2, but doubles false alarms, so it's a trade-off, not a free win. The live demo keeps the original model for now. *(Caveat: these quiet recordings were already used to diagnose the problem, so this is a check that the fix works, not a fully blind test.)*
+
+**Weak labels.** Inside a single quiet recording, loudness swings ~50× (RMS 0.01 to 0.58) as the drone moves, and YAMNet's own top label for some 20 s clips is "Silence" or "Mains hum". The whole recording is labeled "drone", but the drone isn't audible in every window, so part of the "miss" rate is windows with nothing to hear.
+
+## Limitations and next steps
+
+- **Drone types.** The data is mostly small consumer quadcopters, close up. Larger multirotors and fixed-wing, engine-powered drones (e.g. Shahed-type) sound very different. Next: a test set across drone types, with results per type.
+- **Shortcut risk.** Drone and non-drone clips come from different source datasets, so part of what the model learns may be "which dataset". Real recordings through the device's own microphone are the real check.
+- **Weak labels.** Window labels are inherited from the whole recording; finding the windows where the drone is actually audible would give cleaner training and fairer scores.
+- **False alarms vs. range.** Catching quieter drones currently costs more false alarms; loudness normalization (e.g. PCEN) and a better background-noise set are the next things to try.
 
 ## Design decisions
 
@@ -66,12 +79,6 @@ The model has learned "loud, close-range drone clips" very well, but doesn't yet
 - **Loop, don't pad.** Drone clips are mostly 0.5 s while non-drone clips average ~7 s. Padding short clips with silence would let the model learn "half-silent window = drone", which never happens with a live mic, so short clips are looped to fill a window.
 - **One window per YAMNet call.** Batching windows into one call is ~6x faster but changes the embeddings slightly (cosine similarity 0.93–0.99), so training would no longer match the live device.
 - **Capped windows per clip** (30), so a few long recordings can't dominate training.
-
-## Limitations
-
-- **Shortcut risk.** Drone and non-drone clips come from different source datasets, so part of what the model learns may be "which dataset" rather than "is there a drone".
-- **Clean data.** Public drone recordings are mostly close-range; real conditions (distance, wind, engines, rain) are harder.
-- **Window-level metrics.** A deployed alarm would smooth predictions over several windows; that isn't evaluated yet.
 
 ## Data
 
@@ -86,7 +93,8 @@ The model has learned "loud, close-range drone clips" very well, but doesn't yet
 cd src
 ../.venv/bin/python prepare.py   # clean + split → data/processed/manifest.parquet (minutes)
 ../.venv/bin/python embed.py     # YAMNet embeddings → data/processed/*.npz (~40 min on a laptop CPU, resumable)
-../.venv/bin/python train.py     # classifier + metrics → models/ (minutes)
+../.venv/bin/python augment.py   # optional: far-away drone copies → train_aug.npz (~20 min)
+../.venv/bin/python train.py     # classifier + metrics → models/ (minutes); add --aug to include augment.py data
 ../.venv/bin/python evaluate.py  # plots → docs/
 ```
 
